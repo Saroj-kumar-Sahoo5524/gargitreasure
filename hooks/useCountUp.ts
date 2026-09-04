@@ -38,14 +38,14 @@ export function useCountUp({
 
             const start = performance.now();
 
-            function tick(now: number) {
+            const tick = (now: number) => {
               const progress = Math.min((now - start) / duration, 1);
               // Cubic ease-out
               const eased = 1 - Math.pow(1 - progress, 3);
               const current = Math.floor(eased * target);
               setDisplayValue(`${prefix}${current.toLocaleString('en-IN')}${suffix}`);
               if (progress < 1) requestAnimationFrame(tick);
-            }
+            };
 
             requestAnimationFrame(tick);
           }
