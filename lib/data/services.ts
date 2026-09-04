@@ -1,0 +1,56 @@
+import type { ServiceCard } from '@/types/content';
+
+export const servicesData: ServiceCard[] = [
+  {
+    iconName: 'FaSackDollar',
+    iconGradient: 'linear-gradient(135deg,#2451D6,#1B3DA6)',
+    title: 'Personal Loan',
+    description: 'Flexible personal financing designed to help manage planned and unexpected expenses.',
+    features: ['Flexible eligibility', 'Convenient application', 'Transparent process'],
+    href: '#loans',
+    loanTab: 'personal',
+  },
+  {
+    iconName: 'FaCar',
+    iconGradient: 'linear-gradient(135deg,#0E7C7B,#0A5F5E)',
+    title: 'Vehicle Loan',
+    description: 'Financing solutions for purchasing new or pre-owned vehicles, including two-wheelers.',
+    features: ['Car & two-wheeler financing', 'Flexible repayment options', 'Application support'],
+    href: '#loans',
+    loanTab: 'vehicle',
+  },
+  {
+    iconName: 'FaBriefcase',
+    iconGradient: 'linear-gradient(135deg,#A87C34,#8C6528)',
+    title: 'Business Finance',
+    description: 'Solutions designed to support business expansion, working capital, equipment, and growth needs.',
+    features: ['Working capital support', 'Equipment financing', 'Growth-stage funding'],
+    href: '#loans',
+    loanTab: 'business',
+  },
+  {
+    iconName: 'FaHouseChimney',
+    iconGradient: 'linear-gradient(135deg,#1B3DA6,#0E7C7B)',
+    title: 'Home Finance',
+    description: 'Financial solutions for home purchase, construction, or related requirements.',
+    features: ['Purchase & construction', 'Long tenure options', 'Dedicated application support'],
+    href: '#loans',
+    loanTab: 'business',
+  },
+  {
+    iconName: 'FaChartLine',
+    iconGradient: 'linear-gradient(135deg,#0E7C7B,#2451D6)',
+    title: 'Investment Solutions',
+    description: 'Structured investment opportunities designed around different financial objectives and time horizons.',
+    features: ['Short & long-term options', 'Goal-oriented structuring', 'Clear risk information'],
+    href: '#investments',
+  },
+  {
+    iconName: 'FaUserTie',
+    iconGradient: 'linear-gradient(135deg,#16294A,#0B1B34)',
+    title: 'Financial Advisory',
+    description: 'Goal-oriented financial planning and guidance from people who take the time to understand your situation.',
+    features: ['Personalized planning', 'Ongoing review', 'Plain-language guidance'],
+    href: '#contact',
+  },
+];
