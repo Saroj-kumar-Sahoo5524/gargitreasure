@@ -26,8 +26,8 @@ const INITIAL_VALUES: ContactFormValues = {
 };
 
 /**
- * Contact enquiry form with client-side validation and simulated submit.
- * To connect to a real API, set NEXT_PUBLIC_CONTACT_API_URL in .env.local.
+ * Contact enquiry form with client-side validation.
+ * Submissions are sent to /api/contact which saves them to Google Sheets.
  */
 export function ContactForm() {
   const [values, setValues] = useState<ContactFormValues>(INITIAL_VALUES);
@@ -52,22 +52,16 @@ export function ContactForm() {
 
     setStatus('submitting');
 
-    if (config.contactApiEndpoint) {
-      // Real API path — swap in real backend with one-line change
-      try {
-        await fetch(config.contactApiEndpoint, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(values),
-        });
-        setStatus('success');
-      } catch {
-        setStatus('error');
-      }
-    } else {
-      // Demo mode — simulate delay
-      await new Promise((res) => setTimeout(res, config.submitSimulationDelayMs));
+    try {
+      const res = await fetch(config.contactApiEndpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      });
+      if (!res.ok) throw new Error('Server error');
       setStatus('success');
+    } catch {
+      setStatus('error');
     }
   };
 
@@ -88,11 +82,9 @@ export function ContactForm() {
             transition={{ duration: 0.4 }}
           >
             <FaCircleCheck className="text-success mx-auto mb-4" size={44} />
-            <h4 className="font-heading font-bold text-[19px] text-ink mb-2">Enquiry received</h4>
+            <h4 className="font-heading font-bold text-[19px] text-ink mb-2">Enquiry received!</h4>
             <p className="text-text-muted text-[14px]">
-              {config.contactApiEndpoint
-                ? 'Thank you! We will follow up shortly.'
-                : 'This is a demo form — no data was sent. In production, this connects to your CRM or backend.'}
+              Thank you! Your details have been saved and we will follow up shortly.
             </p>
           </motion.div>
         ) : (
@@ -170,6 +162,12 @@ export function ContactForm() {
                 'Submit Enquiry'
               )}
             </Button>
+
+            {status === 'error' && (
+              <p className="text-[13px] text-[#C63A3A] text-center mt-3">
+                Something went wrong. Please try again or email us directly.
+              </p>
+            )}
           </motion.form>
         )}
       </AnimatePresence>

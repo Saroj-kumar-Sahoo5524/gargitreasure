@@ -1,15 +1,21 @@
 /**
  * Application configuration.
- * Environment-variable-friendly — swap NEXT_PUBLIC_CONTACT_API_URL in .env.local
- * to connect the contact form to a real backend with a one-line change.
+ *
+ * Contact form submissions are sent to the internal Next.js API route
+ * `/api/contact`, which securely forwards them to a Google Apps Script
+ * Web App that appends rows to Google Sheets.
+ *
+ * Required server-side env var (add to .env.local or your host's dashboard):
+ *   GOOGLE_SHEET_WEBHOOK_URL — the /exec URL of your deployed Apps Script
  */
 export const config = {
   /**
-   * Contact form API endpoint.
-   * When null, the form runs in demo mode (no data is sent).
+   * Contact form API endpoint — always points to the internal API route.
+   * The Google Sheets webhook URL is kept server-side (GOOGLE_SHEET_WEBHOOK_URL)
+   * and is never exposed to the browser.
    */
-  contactApiEndpoint: process.env.NEXT_PUBLIC_CONTACT_API_URL ?? null,
+  contactApiEndpoint: '/api/contact',
 
-  /** Submit simulation delay in ms (demo mode only) */
+  /** Submit simulation delay in ms (kept for reference, no longer used in production path) */
   submitSimulationDelayMs: 900,
 } as const;
