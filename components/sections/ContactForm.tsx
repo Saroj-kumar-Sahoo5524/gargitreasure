@@ -86,6 +86,16 @@ export function ContactForm() {
             <p className="text-text-muted text-[14px]">
               Thank you! Your details have been saved and we will follow up shortly.
             </p>
+            <button
+              onClick={() => {
+                setValues(INITIAL_VALUES);
+                setErrors({});
+                setStatus('idle');
+              }}
+              className="mt-6 text-[13.5px] font-semibold text-royal underline underline-offset-2 hover:opacity-70 transition-opacity duration-200"
+            >
+              Submit another enquiry
+            </button>
           </motion.div>
         ) : (
           <motion.form
