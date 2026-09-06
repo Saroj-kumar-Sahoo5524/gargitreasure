@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { FaArrowLeft, FaArrowRight, FaCircleCheck } from 'react-icons/fa6';
+import { FaArrowLeft, FaArrowRight, FaChevronRight, FaCircleCheck } from 'react-icons/fa6';
 import { financeMegaMenu } from '@/lib/data/megamenu';
+import { CategoryIllustration } from '@/components/graphics/CategoryIllustration';
 import { Button } from '@/components/ui/Button';
 import type { Metadata } from 'next';
 
@@ -22,173 +23,209 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
+/** Accent colour per finance category — used for badge, checkmarks, links */
+const categoryAccents: Record<string, { primary: string; light: string; hero: string }> = {
+  banking:                { primary: '#2563EB', light: '#DBEAFE', hero: 'linear-gradient(135deg,#0B132B 0%,#1C2541 50%,#0F172A 100%)' },
+  insurance:              { primary: '#0D9488', light: '#CCFBF1', hero: 'linear-gradient(135deg,#0B2B2A 0%,#0A3B3A 50%,#082825 100%)' },
+  'provident-fund':       { primary: '#D97706', light: '#FEF3C7', hero: 'linear-gradient(135deg,#1C1308 0%,#2D1F0C 50%,#150E06 100%)' },
+  'alternate-investment': { primary: '#7C3AED', light: '#EDE9FE', hero: 'linear-gradient(135deg,#13092B 0%,#1E0F40 50%,#0E061D 100%)' },
+};
+
 /**
- * Dynamic category page for each finance type.
- * Route: /finance/[category]
+ * Finance category detail page — same wireframe layout as investment [category]:
+ * dark hero (left content + right advisor card) → overview + illustration →
+ * sub-categories → other finance categories → CTA.
  */
 export default function FinanceCategoryPage({ params }: Props) {
   const cat = financeMegaMenu.categories.find((c) => c.slug === params.category);
   if (!cat) notFound();
 
-  const otherCategories = financeMegaMenu.categories.filter(
-    (c) => c.slug !== params.category
-  );
+  const accent = categoryAccents[cat.slug] ?? { primary: '#2563EB', light: '#DBEAFE', hero: 'linear-gradient(135deg,#0B132B,#1C2541,#0F172A)' };
+  const otherCategories = financeMegaMenu.categories.filter((c) => c.slug !== params.category);
 
   return (
-    <main id="main" className="min-h-screen bg-[#F6F7FA]">
-      {/* Hero banner */}
+    <main id="main" className="min-h-screen bg-[#F8FAFC]">
+
+      {/* ── DARK HERO ─────────────────────────────────────────────────────── */}
       <section
-        className="pt-[140px] pb-[80px] relative overflow-hidden"
-        style={{
-          background: 'linear-gradient(135deg,#0B1B34 0%,#16294A 55%,#A87C34 100%)',
-        }}
+        className="relative pt-[100px] pb-[80px] overflow-hidden"
+        style={{ background: accent.hero }}
       >
-        <div
-          className="absolute top-[-60px] right-[-60px] w-[320px] h-[320px] rounded-full opacity-[0.08] pointer-events-none"
-          style={{ background: 'radial-gradient(circle,#A87C34,transparent)' }}
-        />
+        {/* Grid overlay */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
+          style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '80px 80px' }}/>
 
-        <div className="max-w-[1240px] mx-auto px-8 relative z-10">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-[13px] text-white/60 mb-8">
-            <Link href="/" className="hover:text-white transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/finance" className="hover:text-white transition-colors">Finance</Link>
-            <span>/</span>
-            <span className="text-white">{cat.title}</span>
-          </nav>
+        <div className="max-w-[1280px] mx-auto px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 items-start">
 
-          <div className="flex items-start gap-5 mb-6">
-            <span className="text-[52px] leading-none">{cat.icon}</span>
-            <div>
-              <span className="inline-block bg-white/10 border border-white/20 text-white/80 text-[12px] font-bold tracking-[0.06em] uppercase px-3 py-1 rounded-full mb-3">
+            {/* LEFT: Hero content */}
+            <div className="pt-4">
+              {/* Breadcrumb */}
+              <nav className="flex items-center gap-2 text-[13px] text-white/50 mb-8">
+                <Link href="/" className="hover:text-white transition-colors">Home</Link>
+                <FaChevronRight size={9}/>
+                <Link href="/finance" className="hover:text-white transition-colors">Finance</Link>
+                <FaChevronRight size={9}/>
+                <span className="text-white font-medium">{cat.title}</span>
+              </nav>
+
+              {/* Category badge */}
+              <span className="inline-flex items-center gap-2 bg-white/10 border border-white/20 text-white/80 text-[11px] font-bold tracking-[0.08em] uppercase px-4 py-[6px] rounded-full mb-6">
+                <span className="text-[16px]">{cat.icon}</span>
                 Finance Solution
               </span>
-              <h1
-                className="font-heading font-extrabold text-white mb-2"
-                style={{ fontSize: 'clamp(32px,4vw,52px)' }}
-              >
+
+              {/* Title */}
+              <h1 className="font-heading font-extrabold text-white mb-4 leading-[1.06]"
+                style={{ fontSize: 'clamp(32px,3.8vw,52px)' }}>
                 {cat.title}
               </h1>
-              <p className="text-white/70 text-[18px] font-medium">{cat.tagline}</p>
-            </div>
-          </div>
-
-          {/* Sub-item quick links */}
-          <div className="flex flex-wrap gap-3 mt-6">
-            {cat.items.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="flex items-center gap-2 bg-white/10 border border-white/20 text-white/90 text-[13.5px] font-semibold px-4 py-[8px] rounded-full hover:bg-white/20 transition-colors"
-              >
-                <FaArrowRight size={10} className="text-[#A87C34]" />
-                {item.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Main content */}
-      <section className="py-[80px]">
-        <div className="max-w-[1240px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-[1fr_340px] gap-12 items-start">
-          {/* Left: description + features */}
-          <div>
-            <span className="inline-block text-[11px] font-bold tracking-[0.08em] uppercase text-[#A87C34] mb-3">
-              Overview
-            </span>
-            <h2
-              className="font-heading font-extrabold text-[#0B1B34] mb-5"
-              style={{ fontSize: 'clamp(24px,2.8vw,34px)' }}
-            >
-              Why choose {cat.title}?
-            </h2>
-            <p className="text-[#5A6478] text-[17px] leading-[1.75] mb-10">
-              {cat.pageDescription}
-            </p>
-
-            <h3 className="font-heading font-bold text-[#0B1B34] text-[20px] mb-5">
-              What we offer
-            </h3>
-            <ul className="flex flex-col gap-4">
-              {cat.pageFeatures.map((feature) => (
-                <li key={feature} className="flex items-start gap-3">
-                  <FaCircleCheck size={17} className="text-[#A87C34] mt-[3px] flex-shrink-0" />
-                  <span className="text-[#16294A] text-[15.5px]">{feature}</span>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button variant="primary" size="md" href="/contact">
-                {cat.ctaLabel}
-              </Button>
-              <Button variant="ghost" size="md" href="/finance">
-                <span className="flex items-center gap-2">
-                  <FaArrowLeft size={13} /> All Finance
-                </span>
-              </Button>
-            </div>
-          </div>
-
-          {/* Right: info card */}
-          <div className="sticky top-[100px]">
-            <div className="bg-white border border-[#E3E7EF] rounded-[20px] p-7 shadow-[0_8px_24px_rgba(11,27,52,.08)]">
-              <h4 className="font-heading font-bold text-[18px] text-[#0B1B34] mb-4">
-                Get {cat.title} Advisory
-              </h4>
-              <p className="text-[#5A6478] text-[14px] mb-6 leading-relaxed">
-                Our certified financial planners will evaluate your current situation and design a personalised {cat.title.toLowerCase()} strategy aligned to your goals.
+              <p className="text-white/65 text-[18px] leading-relaxed mb-10 max-w-[540px]">
+                {cat.tagline}. Comprehensive solutions designed around your financial wellbeing.
               </p>
 
-              <div className="flex flex-col gap-3 mb-6">
-                {[
-                  'No-obligation initial consultation',
-                  'Customised financial plan',
-                  'Regular review and updates',
-                  'Dedicated expert support',
-                ].map((point) => (
-                  <div key={point} className="flex items-center gap-2 text-[13.5px] text-[#16294A]">
-                    <FaCircleCheck size={13} className="text-[#A87C34] flex-shrink-0" />
-                    {point}
-                  </div>
+              {/* Quick nav pills */}
+              <div className="flex flex-wrap gap-3">
+                {cat.items.map((item) => (
+                  <Link key={item.label} href={item.href}
+                    className="flex items-center gap-2 bg-white/10 border border-white/20 text-white/85 text-[13.5px] font-semibold px-4 py-[9px] rounded-full hover:bg-white/20 transition-colors duration-200">
+                    <FaArrowRight size={9} className="text-white/60"/>
+                    {item.label}
+                  </Link>
                 ))}
               </div>
+            </div>
 
-              <Button variant="primary" size="md" href="/contact" className="w-full justify-center">
-                Schedule a Consultation
-              </Button>
+            {/* RIGHT: Advisor card */}
+            <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,.25)] mt-4 lg:mt-8">
+              {/* Accent strip */}
+              <div className="h-[6px]" style={{ background: `linear-gradient(90deg,${accent.primary},${accent.primary}BB)` }}/>
+              <div className="p-8">
+                <h3 className="font-heading font-extrabold text-[#0F172A] text-[20px] mb-2">
+                  Get {cat.title} Advisory
+                </h3>
+                <p className="text-[#64748B] text-[14px] leading-relaxed mb-7">
+                  Our certified financial planners will evaluate your situation and design a personalised {cat.title.toLowerCase()} strategy aligned to your goals.
+                </p>
+
+                <ul className="flex flex-col gap-[14px] mb-7">
+                  {[
+                    'No-obligation initial consultation',
+                    'Customised financial strategy',
+                    'Regular reviews and updates',
+                    'Dedicated expert support',
+                  ].map((pt) => (
+                    <li key={pt} className="flex items-center gap-3 text-[14px] text-[#334155] font-medium">
+                      <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
+                        style={{ background: accent.light }}>
+                        <FaCircleCheck size={10} style={{ color: accent.primary }}/>
+                      </span>
+                      {pt}
+                    </li>
+                  ))}
+                </ul>
+
+                <Link href="/contact"
+                  className="flex items-center justify-center w-full py-[14px] rounded-[11px] text-[15px] font-bold text-white transition-all duration-200 hover:opacity-90 hover:shadow-lg"
+                  style={{ background: accent.primary }}>
+                  Schedule a Consultation
+                </Link>
+
+                <p className="text-[11px] text-[#94A3B8] text-center mt-4 leading-relaxed">
+                  *Financial advice is subject to individual eligibility. Terms and conditions apply.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Sub-category detail sections */}
-      <section className="py-[60px]" style={{ background: '#EEF1F6' }}>
-        <div className="max-w-[1240px] mx-auto px-8">
-          <h2 className="font-heading font-bold text-[#0B1B34] text-[22px] mb-8">
+      {/* ── OVERVIEW SECTION ──────────────────────────────────────────────── */}
+      <section className="py-[80px] bg-white">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+
+            {/* Left */}
+            <div>
+              <span className="text-[11px] font-bold tracking-[0.1em] uppercase block mb-4"
+                style={{ color: accent.primary }}>
+                Overview
+              </span>
+              <h2 className="font-heading font-extrabold text-[#0F172A] mb-5"
+                style={{ fontSize: 'clamp(24px,2.8vw,36px)' }}>
+                Why choose {cat.title}?
+              </h2>
+              <p className="text-[#475569] text-[16px] leading-[1.75] mb-8">
+                {cat.pageDescription}
+              </p>
+
+              <h3 className="font-heading font-bold text-[#0F172A] text-[20px] mb-5">
+                What we offer
+              </h3>
+              <ul className="flex flex-col gap-5 mb-10">
+                {cat.pageFeatures.map((feature) => (
+                  <li key={feature} className="flex items-start gap-4">
+                    <span className="w-[22px] h-[22px] rounded-full flex items-center justify-center flex-shrink-0 mt-[2px]"
+                      style={{ background: accent.light }}>
+                      <FaCircleCheck size={11} style={{ color: accent.primary }}/>
+                    </span>
+                    <span className="text-[#334155] text-[15px] leading-relaxed">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-4">
+                <Link href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-[13px] rounded-[11px] text-[15px] font-bold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
+                  style={{ background: accent.primary }}>
+                  {cat.ctaLabel}
+                </Link>
+                <Button variant="ghost" size="md" href="/finance">
+                  <span className="flex items-center gap-2">
+                    <FaArrowLeft size={12}/> All Finance
+                  </span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Right: illustration */}
+            <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[20px] overflow-hidden shadow-[0_8px_24px_rgba(15,23,42,.08)] p-4">
+              <CategoryIllustration slug={cat.slug} className="w-full h-auto rounded-[12px]"/>
+              <p className="text-center text-[12px] text-[#94A3B8] font-medium mt-3">
+                {cat.title} — Finance Overview
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EXPLORE WITHIN (Sub-categories) ──────────────────────────────── */}
+      <section className="py-[72px]" style={{ background: '#F1F5F9' }}>
+        <div className="max-w-[1280px] mx-auto px-8">
+          <h2 className="font-heading font-extrabold text-[#0F172A] text-[26px] mb-8">
             Explore within {cat.title}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {cat.items.map((item, idx) => (
-              <div
-                key={item.label}
+              <div key={item.label}
                 id={item.href.split('#')[1] || `item-${idx}`}
-                className="bg-white border border-[#E3E7EF] rounded-[16px] p-6 hover:shadow-[0_8px_24px_rgba(11,27,52,.08)] transition-shadow"
-              >
-                <h3 className="font-heading font-bold text-[16px] text-[#0B1B34] mb-3 flex items-center gap-2">
-                  <FaArrowRight size={12} className="text-[#A87C34]" />
-                  {item.label}
-                </h3>
-                <p className="text-[#5A6478] text-[14px] leading-relaxed">
+                className="bg-white border border-[#E2E8F0] rounded-[14px] p-6 hover:shadow-[0_12px_40px_rgba(15,23,42,.10)] hover:-translate-y-[2px] transition-all duration-300">
+                <div className="flex items-center gap-3 mb-4">
+                  <span className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                    style={{ background: accent.light }}>
+                    <FaArrowRight size={12} style={{ color: accent.primary }}/>
+                  </span>
+                  <h3 className="font-heading font-bold text-[#0F172A] text-[17px]">
+                    {item.label}
+                  </h3>
+                </div>
+                <p className="text-[#64748B] text-[14px] leading-relaxed mb-5">
                   Expert advisory and implementation support for {item.label.toLowerCase()} — backed by our in-depth knowledge of the Indian financial ecosystem.
                 </p>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#2451D6] mt-4 hover:underline"
-                >
-                  Learn more <FaArrowRight size={10} />
+                <Link href="/contact"
+                  className="inline-flex items-center gap-1 text-[14px] font-bold hover:underline transition-colors"
+                  style={{ color: accent.primary }}>
+                  Learn more <FaArrowRight size={10}/>
                 </Link>
               </div>
             ))}
@@ -196,29 +233,56 @@ export default function FinanceCategoryPage({ params }: Props) {
         </div>
       </section>
 
-      {/* Other finance categories */}
-      <section className="py-[60px]">
-        <div className="max-w-[1240px] mx-auto px-8">
-          <h2 className="font-heading font-bold text-[#0B1B34] text-[22px] mb-8">
+      {/* ── OTHER FINANCE CATEGORIES ──────────────────────────────────────── */}
+      <section className="py-[72px] bg-white">
+        <div className="max-w-[1280px] mx-auto px-8">
+          <h2 className="font-heading font-extrabold text-[#0F172A] text-[26px] mb-8">
             Other finance solutions
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {otherCategories.map((other) => (
-              <Link
-                key={other.slug}
-                href={`/finance/${other.slug}`}
-                className="group bg-white border border-[#E3E7EF] hover:border-[#A87C34]/40 hover:shadow-[0_8px_24px_rgba(11,27,52,.08)] rounded-[16px] p-5 transition-all duration-200 flex items-start gap-4"
-              >
-                <span className="text-[32px] leading-none">{other.icon}</span>
-                <div>
-                  <span className="font-heading font-bold text-[15px] text-[#0B1B34] group-hover:text-[#A87C34] transition-colors block">
-                    {other.title}
+            {otherCategories.map((other) => {
+              const oa = categoryAccents[other.slug] ?? { primary: '#2563EB', light: '#DBEAFE', hero: '' };
+              return (
+                <Link key={other.slug} href={`/finance/${other.slug}`}
+                  className="group bg-white border border-[#E2E8F0] hover:shadow-[0_10px_30px_rgba(15,23,42,.10)] rounded-[14px] p-5 transition-all duration-200 flex items-center gap-4">
+                  <span className="w-12 h-12 rounded-[12px] flex items-center justify-center text-[26px] flex-shrink-0"
+                    style={{ background: oa.light }}>
+                    {other.icon}
                   </span>
-                  <span className="text-[12.5px] text-[#8791A3] mt-1 block">{other.tagline}</span>
-                </div>
-                <FaArrowRight size={12} className="text-[#E3E7EF] group-hover:text-[#A87C34] transition-colors ml-auto mt-1 flex-shrink-0" />
-              </Link>
-            ))}
+                  <div>
+                    <span className="font-heading font-bold text-[15px] text-[#0F172A] group-hover:text-[#2563EB] transition-colors block">
+                      {other.title}
+                    </span>
+                    <span className="text-[12px] text-[#94A3B8] mt-1 block">{other.tagline}</span>
+                  </div>
+                  <FaChevronRight size={12} className="text-[#CBD5E1] group-hover:text-[#2563EB] transition-colors ml-auto flex-shrink-0"/>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA BAND ──────────────────────────────────────────────────────── */}
+      <section className="py-[72px]" style={{ background: accent.hero }}>
+        <div className="max-w-[1280px] mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div>
+            <h3 className="font-heading font-extrabold text-white text-[24px] mb-2">
+              Ready to get started with {cat.title}?
+            </h3>
+            <p className="text-white/60 text-[15px]">
+              Our certified planners will design a personalised strategy — free, no obligation.
+            </p>
+          </div>
+          <div className="flex gap-4 flex-shrink-0">
+            <Link href="/contact"
+              className="inline-flex items-center gap-2 px-6 py-[13px] rounded-[11px] text-[15px] font-bold text-white hover:opacity-90 transition-all"
+              style={{ background: accent.primary }}>
+              Schedule a Consultation
+            </Link>
+            <Button variant="ghost" size="md" href="/finance">
+              ← All Finance
+            </Button>
           </div>
         </div>
       </section>
