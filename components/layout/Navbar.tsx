@@ -6,15 +6,26 @@ import { FaBars } from 'react-icons/fa6';
 import { useScrolled } from '@/hooks/useScrolled';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
 import { MobileMenu } from './MobileMenu';
-import { navRoutes } from '@/lib/data/nav';
 import { Button } from '@/components/ui/Button';
+
+/** All nav links shown in the top bar */
+const desktopNavItems = [
+  { label: 'Home',       href: '/' },
+  { label: 'Investment', href: '/investments' },
+  { label: 'Finance',    href: '/finance' },
+  { label: 'About Us',   href: '/about' },
+  { label: 'Resources',  href: '/resources' },
+  { label: 'Contact',    href: '/contact' },
+];
+
+const mobileLinks = desktopNavItems;
 
 /**
  * Sticky navigation bar.
- * - Applies frosted-glass background past 40px scroll via useScrolled()
- * - Swaps between hash anchors (#section) on home and route links (/section) elsewhere
+ * - Frosted-glass background past 40 px scroll via useScrolled()
+ * - Investment and Finance are plain links that navigate to their landing pages
  * - Desktop: logo + nav links + CTA buttons
- * - Mobile (< 900px): logo + hamburger toggle → MobileMenu overlay
+ * - Mobile (<900 px): logo + hamburger → MobileMenu overlay
  */
 export function Navbar() {
   const scrolled = useScrolled();
@@ -33,7 +44,10 @@ export function Navbar() {
       >
         <div className="max-w-content mx-auto px-8 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-[10px] font-heading font-extrabold text-[19px] text-ink no-underline">
+          <Link
+            href="/"
+            className="flex items-center gap-[10px] font-heading font-extrabold text-[19px] text-ink no-underline"
+          >
             <span className="w-[34px] h-[34px] rounded-[9px] bg-gradient-to-br from-royal to-teal flex items-center justify-center text-white text-[15px] font-extrabold flex-shrink-0">
               GT
             </span>
@@ -41,13 +55,16 @@ export function Navbar() {
           </Link>
 
           {/* Desktop nav links */}
-          <nav className="hidden lg:flex items-center gap-[34px]" aria-label="Primary">
-            {navRoutes.map((item) => (
+          <nav className="hidden lg:flex items-center gap-[30px]" aria-label="Primary">
+            {desktopNavItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
                 className={`text-[14.5px] font-semibold text-ink-soft relative py-1 transition-colors duration-200 hover:text-royal after:absolute after:left-0 after:bottom-[-2px] after:h-[2px] after:w-0 after:bg-royal after:transition-[width] after:duration-[250ms] after:ease-out hover:after:w-full ${
-                  pathname === item.href ? 'text-royal after:w-full' : ''
+                  pathname === item.href ||
+                  (item.href !== '/' && pathname.startsWith(item.href))
+                    ? 'text-royal after:w-full'
+                    : ''
                 }`}
               >
                 {item.label}
@@ -78,7 +95,7 @@ export function Navbar() {
         </div>
       </header>
 
-      <MobileMenu isOpen={isOpen} onClose={close} links={navRoutes} isHome={false} />
+      <MobileMenu isOpen={isOpen} onClose={close} links={mobileLinks} isHome={false} />
     </>
   );
 }
