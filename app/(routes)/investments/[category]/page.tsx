@@ -142,57 +142,74 @@ export default function InvestmentCategoryPage({ params }: Props) {
       {/* ── OVERVIEW SECTION ──────────────────────────────────────────────── */}
       <section className="py-[80px] bg-white">
         <div className="max-w-[1280px] mx-auto px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
             {/* Left: Why invest + features */}
             <div>
-              <span className="text-[11px] font-bold tracking-[0.1em] uppercase text-[#2563EB] block mb-4">
+              {/* Pill badge */}
+              <span className="inline-flex items-center bg-blue-50 text-blue-600 text-[11px] font-semibold tracking-[0.1em] uppercase px-3 py-[5px] rounded-md mb-5">
                 Overview
               </span>
-              <h2 className="font-heading font-extrabold text-[#0F172A] mb-5"
-                style={{ fontSize: 'clamp(24px,2.8vw,36px)' }}>
+
+              {/* Title */}
+              <h2
+                className="font-heading font-bold tracking-tight text-slate-900 mb-4"
+                style={{ fontSize: 'clamp(26px,2.8vw,40px)', lineHeight: 1.15 }}
+              >
                 Why invest in {cat.title}?
               </h2>
-              <p className="text-[#475569] text-[16px] leading-[1.75] mb-8">
+
+              {/* Description */}
+              <p className="text-slate-500 text-[16px] leading-relaxed mb-8">
                 {cat.pageDescription}
               </p>
 
-              <h3 className="font-heading font-bold text-[#0F172A] text-[20px] mb-5">
-                What we offer
-              </h3>
-              <ul className="flex flex-col gap-5 mb-10">
+              {/* Feature list header */}
+              <p className="text-slate-800 font-semibold text-[15px] mb-3">What we offer</p>
+
+              {/* Micro-interactive feature rows */}
+              <ul className="flex flex-col gap-1.5 mb-10">
                 {cat.pageFeatures.map((feature) => (
-                  <li key={feature} className="flex items-start gap-4">
-                    <span className="w-[22px] h-[22px] rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0 mt-[2px]">
-                      <FaCircleCheck size={11} className="text-[#2563EB]"/>
+                  <li
+                    key={feature}
+                    className="group flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-slate-50 border border-transparent hover:border-slate-100 cursor-default"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-[2px] group-hover:bg-blue-100 transition-colors duration-200">
+                      <FaCircleCheck size={10} className="text-blue-600"/>
                     </span>
-                    <span className="text-[#334155] text-[15px] leading-relaxed">{feature}</span>
+                    <span className="text-slate-600 text-[14.5px] leading-relaxed">{feature}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="flex flex-wrap gap-4">
+              {/* CTA group */}
+              <div className="flex flex-wrap items-center gap-3">
                 <Button variant="primary" size="md" href="/contact">
                   {cat.ctaLabel}
                 </Button>
                 <Button variant="ghost" size="md" href="/investments">
                   <span className="flex items-center gap-2">
-                    <FaArrowLeft size={12}/> All Investments
+                    <FaArrowLeft size={11}/> All Investments
                   </span>
                 </Button>
               </div>
             </div>
 
-            {/* Right: Category illustration */}
-            <div className="bg-[#F8FAFC] border border-[#E2E8F0] rounded-[20px] overflow-hidden shadow-[0_8px_24px_rgba(15,23,42,.08)] p-4">
-              <CategoryIllustration slug={cat.slug} className="w-full h-auto rounded-[12px]"/>
-              <p className="text-center text-[12px] text-[#94A3B8] font-medium mt-3">
+            {/* Right: Premium media card */}
+            <div
+              className="rounded-[24px] overflow-hidden border border-slate-200/80 bg-slate-50/60 p-[14px]"
+              style={{ boxShadow: '0 20px 60px rgba(15,23,42,0.09), 0 4px 16px rgba(15,23,42,0.05)' }}
+            >
+              <CategoryIllustration slug={cat.slug} className="w-full"/>
+              <p className="text-center text-[11.5px] text-slate-400 font-medium mt-4 tracking-wide">
                 {cat.title} — Investment Overview
               </p>
             </div>
+
           </div>
         </div>
       </section>
+
 
       {/* ── EXPLORE WITHIN (Sub-categories) ──────────────────────────────── */}
       <section className="py-[72px]" style={{ background: '#F1F5F9' }}>
