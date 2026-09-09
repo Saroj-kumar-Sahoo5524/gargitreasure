@@ -184,7 +184,12 @@ export default function InvestmentCategoryPage({ params }: Props) {
 
               {/* CTA group */}
               <div className="flex flex-wrap items-center gap-3">
-                <Button variant="primary" size="md" href="/contact">
+                <Button
+                  variant="primary"
+                  size="md"
+                  href={`/investments/${params.category}/details`}
+                  id={`explore-${params.category}-details`}
+                >
                   {cat.ctaLabel}
                 </Button>
                 <Button variant="ghost" size="md" href="/investments">
