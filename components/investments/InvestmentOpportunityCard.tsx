@@ -17,6 +17,8 @@ import {
   FaScaleBalanced, FaGavel, FaCertificate, FaArrowRightArrowLeft,
   FaCloudSun, FaRoute, FaHandshake,
   FaMagnifyingGlass, FaArrowsRotate, FaLock,
+  // Finance icons
+  FaUser, FaCar, FaHospital, FaUserShield, FaHeart,
 } from 'react-icons/fa6';
 import type { InvestmentOpportunity } from '@/lib/data/investmentDetails';
 
@@ -38,6 +40,7 @@ const ICON_MAP: Record<string, IconComponent> = {
   FaScaleBalanced, FaGavel, FaCertificate, FaArrowRightArrowLeft,
   FaCloudSun, FaRoute, FaHandshake,
   FaMagnifyingGlass, FaArrowsRotate, FaLock,
+  FaUser, FaCar, FaHospital, FaUserShield, FaHeart,
 };
 
 interface Props {

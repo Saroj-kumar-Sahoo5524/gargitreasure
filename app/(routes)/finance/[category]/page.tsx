@@ -192,7 +192,8 @@ export default function FinanceCategoryPage({ params }: Props) {
               {/* CTA group */}
               <div className="flex flex-wrap items-center gap-3">
                 <Link
-                  href="/contact"
+                  href={`/finance/${params.category}/details`}
+                  id={`explore-${params.category}-details`}
                   className="inline-flex items-center gap-2 px-6 py-[13px] rounded-[11px] text-[15px] font-bold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
                   style={{ background: accent.primary }}
                 >

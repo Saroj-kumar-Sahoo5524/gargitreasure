@@ -7,6 +7,8 @@ import {
   FaChartLine, FaMagnifyingGlass, FaArrowsRotate, FaLock, FaCloudSun,
   FaSeedling, FaLeaf, FaCertificate, FaArrowRightArrowLeft,
   FaVault, FaGavel,
+  // Finance additional
+  FaLandmark, FaFileLines, FaFileContract,
 } from 'react-icons/fa6';
 import type { InvestmentAdvantage } from '@/lib/data/investmentDetails';
 
@@ -18,6 +20,8 @@ const ICON_MAP: Record<string, IconComponent> = {
   FaChartLine, FaMagnifyingGlass, FaArrowsRotate, FaLock, FaCloudSun,
   FaSeedling, FaLeaf, FaCertificate, FaArrowRightArrowLeft,
   FaVault, FaGavel,
+  // Finance additional
+  FaLandmark, FaFileLines, FaFileContract,
 };
 
 interface Props {

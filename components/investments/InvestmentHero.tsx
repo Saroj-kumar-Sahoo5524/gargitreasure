@@ -13,6 +13,8 @@ interface Props {
   eyebrow: string;
   headline: string;
   subheadline: string;
+  /** Route base — 'investments' or 'finance'. Defaults to 'investments'. */
+  basePath?: string;
 }
 
 export function InvestmentHero({
@@ -22,6 +24,7 @@ export function InvestmentHero({
   eyebrow,
   headline,
   subheadline,
+  basePath = 'investments',
 }: Props) {
   return (
     <section
@@ -61,10 +64,12 @@ export function InvestmentHero({
         >
           <Link href="/" className="hover:text-white transition-colors">Home</Link>
           <FaChevronRight size={9} />
-          <Link href="/investments" className="hover:text-white transition-colors">Investments</Link>
+          <Link href={`/${basePath}`} className="hover:text-white transition-colors">
+            {basePath.charAt(0).toUpperCase() + basePath.slice(1)}
+          </Link>
           <FaChevronRight size={9} />
           <Link
-            href={`/investments/${categorySlug}`}
+            href={`/${basePath}/${categorySlug}`}
             className="hover:text-white transition-colors"
           >
             {categoryTitle}

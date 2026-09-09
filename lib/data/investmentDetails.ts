@@ -23,6 +23,15 @@ export interface InvestmentOpportunity {
   isOpportunityCallout?: boolean;
 }
 
+export interface InvestorSnapshot {
+  /** e.g. "₹5 Lakhs to ₹10+ Lakhs per work" */
+  entrySize: string;
+  /** e.g. "5 to 10 years" */
+  holdingHorizon: string;
+  /** e.g. "Sale of Goods Act, 1930 (clear title guarantee)" */
+  legalShield: string;
+}
+
 export interface InvestmentSection {
   /** e.g. "Petrochemicals" */
   title: string;
@@ -32,6 +41,8 @@ export interface InvestmentSection {
   description: string;
   /** List of 3–5 sub-opportunities rendered as icon cards */
   opportunities: InvestmentOpportunity[];
+  /** Optional investor snapshot — Entry Size, Holding Horizon, Legal Shield */
+  investorSnapshot?: InvestorSnapshot;
 }
 
 export interface InvestmentAdvantage {
