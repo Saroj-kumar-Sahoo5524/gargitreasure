@@ -10,7 +10,7 @@ export const resourcesData: ResourceCard[] = [
   },
   {
     iconName: 'FaFileInvoiceDollar',
-    category: 'Loans',
+    category: 'Loans & Credit',
     readTime: '5 min read',
     title: 'Understanding Loan EMI',
     description: 'How EMIs are calculated and what affects your monthly repayment amount.',
@@ -38,9 +38,16 @@ export const resourcesData: ResourceCard[] = [
   },
   {
     iconName: 'FaCircleQuestion',
-    category: 'Loans',
+    category: 'Borrower Diligence',
     readTime: '6 min read',
     title: 'Things to Consider Before Taking a Loan',
     description: 'Key questions to ask yourself before committing to any financing.',
+  },
+  {
+    iconName: 'FaMoneyBillTrendUp',
+    category: 'Business Finance ',
+    readTime: '8 min read',
+    title: 'Corporate Cash Flow',
+    description: 'Optimize enterprise treasury. Learn to compress your Cash Conversion Cycle, monitor DSCR parameters, and deploy corporate liquidity safely.',
   },
 ];

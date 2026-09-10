@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import {
   FaWallet, FaFileInvoiceDollar, FaScaleBalanced, FaChartLine, FaPiggyBank, FaCircleQuestion,
+  FaMoneyBillTrendUp,
 } from 'react-icons/fa6';
 import { Kicker } from '@/components/ui/Kicker';
 import { resourcesData } from '@/lib/data/resources';
@@ -10,6 +11,7 @@ import type { ResourceCard } from '@/types/content';
 
 const iconMap: Record<string, React.ElementType> = {
   FaWallet, FaFileInvoiceDollar, FaScaleBalanced, FaChartLine, FaPiggyBank, FaCircleQuestion,
+  FaMoneyBillTrendUp,
 };
 
 function ResourceCardComponent({ card, index }: { card: ResourceCard; index: number }) {
