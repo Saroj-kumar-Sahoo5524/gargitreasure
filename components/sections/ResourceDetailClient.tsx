@@ -207,6 +207,27 @@ export function ResourceDetailClient({ card }: Props) {
             <FaArrowLeft size={12} /> Back to all resources
           </Link>
         </div>
+
+        {/* Disclaimer */}
+        <motion.div
+          className="mt-[48px] rounded-[14px] border border-amber-200 bg-amber-50 px-6 py-5"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-[12px] font-bold uppercase tracking-widest text-amber-700 mb-2">
+            Disclaimer
+          </p>
+          <p className="text-[13px] leading-[1.8] text-amber-900/80">
+            The information provided in these guides is for educational and informational purposes
+            only and does not constitute formal legal, tax, or investment advice. While provisions
+            are aligned with active Indian regulations, statutes can evolve. Financial solutions and
+            investment allocations involve specific eligibility rules, terms, and market risks.
+            Please read the official scheme or credit sanction documentation thoroughly, or consult
+            a certified professional before executing financial decisions.
+          </p>
+        </motion.div>
       </div>
     </div>
   );
