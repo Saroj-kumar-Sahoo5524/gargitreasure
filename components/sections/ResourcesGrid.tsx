@@ -1,9 +1,10 @@
 'use client';
 
 import { motion, useReducedMotion } from 'framer-motion';
+import Link from 'next/link';
 import {
   FaWallet, FaFileInvoiceDollar, FaScaleBalanced, FaChartLine, FaPiggyBank, FaCircleQuestion,
-  FaMoneyBillTrendUp,
+  FaMoneyBillTrendUp, FaArrowRight,
 } from 'react-icons/fa6';
 import { Kicker } from '@/components/ui/Kicker';
 import { resourcesData } from '@/lib/data/resources';
@@ -20,7 +21,7 @@ function ResourceCardComponent({ card, index }: { card: ResourceCard; index: num
 
   return (
     <motion.div
-      className="bg-white border border-border-base rounded-[16px] overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-[5px] hover:shadow-md"
+      className="group relative bg-white border border-border-base rounded-[16px] overflow-hidden transition-[transform,box-shadow] duration-300 hover:-translate-y-[5px] hover:shadow-lg"
       initial={shouldReduce ? {} : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -29,7 +30,7 @@ function ResourceCardComponent({ card, index }: { card: ResourceCard; index: num
       <div className="h-[150px] bg-gradient-to-br from-royal to-teal flex items-center justify-center text-white/85 text-[30px]">
         {Icon && <Icon size={30} />}
       </div>
-      <div className="p-5">
+      <div className="p-5 pb-[60px]">
         <div className="flex gap-3 text-[12px] text-text-soft font-semibold mb-[10px]">
           <span className="text-royal">{card.category}</span>
           <span>·</span>
@@ -38,9 +39,20 @@ function ResourceCardComponent({ card, index }: { card: ResourceCard; index: num
         <h4 className="font-heading font-bold text-[15.5px] text-ink mb-2 leading-[1.4]">{card.title}</h4>
         <p className="text-[13.5px] text-text-muted">{card.description}</p>
       </div>
+
+      {/* Know More button — slides up on hover */}
+      <div className="absolute bottom-0 left-0 right-0 px-5 pb-4 translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+        <Link
+          href={`/resources/${card.slug}`}
+          className="flex items-center justify-center gap-2 w-full bg-royal text-white text-[13.5px] font-semibold py-[10px] rounded-[10px] hover:bg-royal/90 transition-colors duration-200"
+        >
+          Know More <FaArrowRight size={12} />
+        </Link>
+      </div>
     </motion.div>
   );
 }
+
 
 /**
  * Resources grid — six financial education cards.

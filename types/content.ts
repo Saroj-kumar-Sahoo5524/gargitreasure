@@ -118,12 +118,33 @@ export interface FAQItem {
 }
 
 // ── Resources ─────────────────────────────────────────────────────────────────
+export interface ResourceTable {
+  headers: string[];
+  rows: string[][];
+}
+
+export interface ResourceFormula {
+  expression: string;
+  legend: string;
+}
+
+export interface ResourceSection {
+  heading: string;
+  body?: string;
+  bullets?: string[];
+  numbered?: string[];
+  table?: ResourceTable;
+  formula?: ResourceFormula;
+}
+
 export interface ResourceCard {
   iconName: string;
   category: string;
   readTime: string;
   title: string;
   description: string;
+  slug: string;
+  content: ResourceSection[];
 }
 
 // ── Footer ────────────────────────────────────────────────────────────────────
