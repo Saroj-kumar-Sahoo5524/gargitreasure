@@ -48,20 +48,27 @@ export function ResourcesGrid() {
     <section id="resources" className="section-tight" style={{ background: 'var(--bg-alt, #EEF1F6)' }}>
       <div className="max-w-content mx-auto px-8">
         <motion.div
-          className="max-w-[640px] mb-[56px]"
+          className="max-w-[640px] mb-6"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
           <Kicker>Resources</Kicker>
-          <h2 className="font-heading font-extrabold text-ink mb-4" style={{ fontSize: 'clamp(28px,3.4vw,40px)' }}>
-            Financial education hub
+          <h2 className="font-heading font-extrabold text-ink" style={{ fontSize: 'clamp(28px,3.4vw,40px)' }}>
+            Financial Education Hub
           </h2>
-          <p className="text-text-muted text-[17px]">
-            Practical guides on budgeting, loans, and investing — written in plain language.
-          </p>
         </motion.div>
+
+        <motion.p
+          className="text-text-muted text-[16.5px] mb-[40px]"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          At Gargi Treasure, we believe that true financial clarity comes from reliable information. We have deconstructed complex Indian financial systems, regulatory protections, and wealth building frameworks into straightforward, actionable insights to help you make informed decisions with absolute confidence.
+        </motion.p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[22px]">
           {resourcesData.map((card, i) => (
