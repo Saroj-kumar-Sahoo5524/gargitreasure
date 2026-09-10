@@ -86,7 +86,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.08, ease: 'easeOut' }}
             >
-              Smarter financial solutions. Stronger futures.
+              WHERE CAPITAL MEETS GLOBAL TRADE
             </motion.h1>
 
             {/* Paragraph */}
@@ -96,7 +96,7 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.16, ease: 'easeOut' }}
             >
-              Explore flexible loan solutions, structured investment opportunities, and financial services designed around your goals — with transparent terms at every step.
+              Expanding credit, optimizing investments, and unlocking new trade frontiers. We make every market move count by providing transparent financing solutions and proven investment governance for enterprise and family wealth.
             </motion.p>
 
             {/* CTA buttons */}

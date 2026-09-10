@@ -75,10 +75,10 @@ export function SolutionsGrid() {
         >
           <Kicker>Financial solutions</Kicker>
           <h2 className="font-heading font-extrabold text-ink mb-4" style={{ fontSize: 'clamp(28px,3.4vw,40px)' }}>
-            Financial solutions built around your goals
+            Financial solutions that work for you
           </h2>
           <p className="text-text-muted text-[17px]">
-            From everyday financing needs to long-term wealth building, explore services designed to fit real financial circumstances.
+            Built for where you are today, and where you want to be tomorrow. From flexible funding to disciplined long-term investing, we provide clear, reliable financial services designed around your actual goals.
           </p>
         </motion.div>
 
