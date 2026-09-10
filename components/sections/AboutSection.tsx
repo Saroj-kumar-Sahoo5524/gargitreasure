@@ -25,13 +25,10 @@ export function AboutSection() {
               className="font-heading font-extrabold text-ink mb-5"
               style={{ fontSize: 'clamp(26px,3vw,34px)' }}
             >
-              Financial services built to be understood, not just used
+              Where Strategic Capital Meets Everyday Opportunity
             </h2>
             <p className="text-text-muted text-[16.5px] mb-5 max-w-[520px]">
-              At Gargi Treasure, we believe financial services should be easier to understand, easier to access, and designed around real financial goals.
-            </p>
-            <p className="text-text-muted text-[16.5px] mb-7 max-w-[520px]">
-              Our aim is to connect people with appropriate financial solutions while emphasizing responsible decision-making and transparent information at every step — from application to ongoing support.
+              At Gargi Treasure, we believe real financial momentum begins with clarity knowing where the market is moving, securing the right capital at the right time, and choosing solutions that build genuine security. Whether you are funding a life milestone through structured personal credit or deploying capital into physical commerce, we cut through institutional complexity to deliver honest terms, direct guidance, and dependable execution that moves your balance sheet forward.
             </p>
 
             <div className="grid grid-cols-2 gap-4">
@@ -67,11 +64,11 @@ export function AboutSection() {
             <div className="mt-6 grid grid-cols-2 gap-4">
               <div>
                 <div className="text-[12px] text-text-soft font-semibold mb-1">Mission</div>
-                <div className="text-[13.5px] text-ink-soft font-semibold">Accessible, transparent finance</div>
+                <div className="text-[13.5px] text-ink-soft font-semibold">To simplify access to capital and market opportunities by delivering transparent credit solutions, dependable trade execution, and responsible guidance at every step.</div>
               </div>
               <div>
                 <div className="text-[12px] text-text-soft font-semibold mb-1">Vision</div>
-                <div className="text-[13.5px] text-ink-soft font-semibold">Financial confidence for all</div>
+                <div className="text-[13.5px] text-ink-soft font-semibold">To build an enduring, trusted ecosystem where accessible finance, strategic investments, and global trade converge with complete clarity and purpose.</div>
               </div>
             </div>
           </motion.div>

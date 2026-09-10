@@ -33,7 +33,7 @@ export function WhyChoose() {
     <section className="section">
       <div className="max-w-content mx-auto px-8">
         <motion.div
-          className="max-w-[640px] mb-[56px]"
+          className="max-w-[640px] mb-6"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -44,6 +44,16 @@ export function WhyChoose() {
             Why choose Gargi Treasure?
           </h2>
         </motion.div>
+
+        <motion.p
+          className="text-text-muted text-[16.5px] mb-[40px]"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.1 }}
+        >
+          Gargi Treasure is the integrated finance, investment, and commercial trade arm of the Gargi Group. We were founded to serve as a single, dependable ecosystem that addresses both sides of your financial life: accessible lending solutions including Home Loans, Vehicle Loans, and Business Credit alongside disciplined market trading and asset backed investments. Backed by the operational scale and trust of the Gargi Group, we combine institutional due diligence with a customer focused approach, ensuring every financial move you make is built on a solid, reliable foundation.
+        </motion.p>
 
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[2px] bg-border-base rounded-md overflow-hidden border border-border-base"
