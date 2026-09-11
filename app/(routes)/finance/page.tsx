@@ -12,9 +12,9 @@ export const metadata: Metadata = {
 
 /** Colour per category */
 const categoryColors: Record<string, { bg: string; color: string }> = {
-  banking:                { bg: '#2451D614', color: '#2451D6' },
-  insurance:              { bg: '#0E7C7B14', color: '#0E7C7B' },
-  'provident-fund':       { bg: '#A87C3414', color: '#A87C34' },
+  banking: { bg: '#2451D614', color: '#2451D6' },
+  insurance: { bg: '#0E7C7B14', color: '#0E7C7B' },
+  'provident-fund': { bg: '#A87C3414', color: '#A87C34' },
   'alternate-investment': { bg: '#7C3AED14', color: '#7C3AED' },
 };
 
@@ -143,60 +143,70 @@ export default function FinancePage() {
       </section>
 
       {/* ── Loan Products ────────────────────────────────────────────────── */}
-      <section className="pb-[72px]">
-        <div className="max-w-[1240px] mx-auto px-8">
-          <h2
-            className="font-heading font-extrabold text-[#0B1B34] mb-2"
-            style={{ fontSize: 'clamp(22px,2.8vw,32px)' }}
+      {/* {/*
+<section className="pb-[72px]">
+  <div className="max-w-[1240px] mx-auto px-8">
+    <h2
+      className="font-heading font-extrabold text-[#0B1B34] mb-2"
+      style={{ fontSize: 'clamp(22px,2.8vw,32px)' }}
+    >
+      Loan Products
+    </h2>
+
+    <p className="text-[#5A6478] text-[15px] mb-8">
+      Transparent terms, fast approval, and dedicated support for every financing need.
+    </p>
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {loanProducts.map((loan) => (
+        <div
+          key={loan.title}
+          className="bg-white border border-[#E3E7EF] rounded-[18px] p-7 hover:shadow-[0_12px_40px_rgba(11,27,52,.10)] hover:-translate-y-[2px] transition-all duration-300 flex flex-col"
+        >
+          <div
+            className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center text-[26px] mb-5"
+            style={{ background: loan.bg }}
           >
-            Loan Products
-          </h2>
-          <p className="text-[#5A6478] text-[15px] mb-8">
-            Transparent terms, fast approval, and dedicated support for every financing need.
+            {loan.icon}
+          </div>
+
+          <h3 className="font-heading font-bold text-[#0B1B34] text-[18px] mb-2">
+            {loan.title}
+          </h3>
+
+          <p className="text-[#5A6478] text-[14px] leading-relaxed mb-5 flex-1">
+            {loan.description}
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {loanProducts.map((loan) => (
-              <div
-                key={loan.title}
-                className="bg-white border border-[#E3E7EF] rounded-[18px] p-7 hover:shadow-[0_12px_40px_rgba(11,27,52,.10)] hover:-translate-y-[2px] transition-all duration-300 flex flex-col"
+          <ul className="flex flex-col gap-[8px] mb-6">
+            {loan.features.map((f) => (
+              <li
+                key={f}
+                className="flex items-center gap-[10px] text-[13.5px] text-[#16294A]"
               >
-                {/* Icon badge */}
-                <div
-                  className="w-[52px] h-[52px] rounded-[14px] flex items-center justify-center text-[26px] mb-5"
-                  style={{ background: loan.bg }}
-                >
-                  {loan.icon}
-                </div>
-
-                <h3 className="font-heading font-bold text-[#0B1B34] text-[18px] mb-2">
-                  {loan.title}
-                </h3>
-                <p className="text-[#5A6478] text-[14px] leading-relaxed mb-5 flex-1">
-                  {loan.description}
-                </p>
-
-                <ul className="flex flex-col gap-[8px] mb-6">
-                  {loan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-[10px] text-[13.5px] text-[#16294A]">
-                      <FaCircleCheck size={13} style={{ color: loan.color }} className="flex-shrink-0" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <Link
-                  href={loan.href}
-                  className="inline-flex items-center gap-[6px] text-[14px] font-bold transition-colors hover:underline"
+                <FaCircleCheck
+                  size={13}
                   style={{ color: loan.color }}
-                >
-                  {loan.cta} <FaArrowRight size={11} />
-                </Link>
-              </div>
+                  className="flex-shrink-0"
+                />
+                {f}
+              </li>
             ))}
-          </div>
+          </ul>
+
+          <Link
+            href={loan.href}
+            className="inline-flex items-center gap-[6px] text-[14px] font-bold transition-colors hover:underline"
+            style={{ color: loan.color }}
+          >
+            {loan.cta} <FaArrowRight size={11} />
+          </Link>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
+*/}
 
       {/* ── CTA strip ───────────────────────────────────────────────────── */}
       <section
