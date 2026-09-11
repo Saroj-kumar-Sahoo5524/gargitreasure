@@ -239,7 +239,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                 <p className="text-[#64748B] text-[14px] leading-relaxed mb-5">
                   Discover tailored {item.label.toLowerCase()} opportunities carefully selected by our research team, offering competitive returns with full transparency.
                 </p>
-                <Link href="/contact"
+                <Link href={`${params.category}/details`}
                   className="inline-flex items-center gap-1 text-[14px] font-bold text-[#2563EB] hover:underline transition-colors">
                   Learn more <FaArrowRight size={10} />
                 </Link>
