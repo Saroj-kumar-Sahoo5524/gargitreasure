@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { FaArrowRight, FaChevronRight, FaCircleCheck } from 'react-icons/fa6';
 import { investmentMegaMenu } from '@/lib/data/megamenu';
 import { Button } from '@/components/ui/Button';
+import { InvestmentPlansCard } from '@/components/investments/InvestmentPlansCard';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -110,6 +111,9 @@ export default function InvestmentsPage() {
           </div>
         </div>
       </section>
+
+      {/* ── Investment Plans Card ────────────────────────────────────────── */}
+      <InvestmentPlansCard />
 
       {/* ── CTA strip ───────────────────────────────────────────────────── */}
       <section
