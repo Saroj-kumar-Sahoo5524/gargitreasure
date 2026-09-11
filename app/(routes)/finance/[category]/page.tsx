@@ -25,9 +25,9 @@ export function generateMetadata({ params }: Props): Metadata {
 
 /** Accent colour per finance category — used for badge, checkmarks, links */
 const categoryAccents: Record<string, { primary: string; light: string; hero: string }> = {
-  banking:                { primary: '#2563EB', light: '#DBEAFE', hero: 'linear-gradient(135deg,#0B132B 0%,#1C2541 50%,#0F172A 100%)' },
-  insurance:              { primary: '#0D9488', light: '#CCFBF1', hero: 'linear-gradient(135deg,#0B2B2A 0%,#0A3B3A 50%,#082825 100%)' },
-  'provident-fund':       { primary: '#D97706', light: '#FEF3C7', hero: 'linear-gradient(135deg,#1C1308 0%,#2D1F0C 50%,#150E06 100%)' },
+  banking: { primary: '#2563EB', light: '#DBEAFE', hero: 'linear-gradient(135deg,#0B132B 0%,#1C2541 50%,#0F172A 100%)' },
+  insurance: { primary: '#0D9488', light: '#CCFBF1', hero: 'linear-gradient(135deg,#0B2B2A 0%,#0A3B3A 50%,#082825 100%)' },
+  'provident-fund': { primary: '#D97706', light: '#FEF3C7', hero: 'linear-gradient(135deg,#1C1308 0%,#2D1F0C 50%,#150E06 100%)' },
   'alternate-investment': { primary: '#7C3AED', light: '#EDE9FE', hero: 'linear-gradient(135deg,#13092B 0%,#1E0F40 50%,#0E061D 100%)' },
 };
 
@@ -53,7 +53,7 @@ export default function FinanceCategoryPage({ params }: Props) {
       >
         {/* Grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '80px 80px' }}/>
+          style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '80px 80px' }} />
 
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 items-start">
@@ -63,9 +63,9 @@ export default function FinanceCategoryPage({ params }: Props) {
               {/* Breadcrumb */}
               <nav className="flex items-center gap-2 text-[13px] text-white/50 mb-8">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <FaChevronRight size={9}/>
+                <FaChevronRight size={9} />
                 <Link href="/finance" className="hover:text-white transition-colors">Finance</Link>
-                <FaChevronRight size={9}/>
+                <FaChevronRight size={9} />
                 <span className="text-white font-medium">{cat.title}</span>
               </nav>
 
@@ -89,7 +89,7 @@ export default function FinanceCategoryPage({ params }: Props) {
                 {cat.items.map((item) => (
                   <Link key={item.label} href={item.href}
                     className="flex items-center gap-2 bg-white/10 border border-white/20 text-white/85 text-[13.5px] font-semibold px-4 py-[9px] rounded-full hover:bg-white/20 transition-colors duration-200">
-                    <FaArrowRight size={9} className="text-white/60"/>
+                    <FaArrowRight size={9} className="text-white/60" />
                     {item.label}
                   </Link>
                 ))}
@@ -99,7 +99,7 @@ export default function FinanceCategoryPage({ params }: Props) {
             {/* RIGHT: Advisor card */}
             <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,.25)] mt-4 lg:mt-8">
               {/* Accent strip */}
-              <div className="h-[6px]" style={{ background: `linear-gradient(90deg,${accent.primary},${accent.primary}BB)` }}/>
+              <div className="h-[6px]" style={{ background: `linear-gradient(90deg,${accent.primary},${accent.primary}BB)` }} />
               <div className="p-8">
                 <h3 className="font-heading font-extrabold text-[#0F172A] text-[20px] mb-2">
                   Get {cat.title} Advisory
@@ -118,7 +118,7 @@ export default function FinanceCategoryPage({ params }: Props) {
                     <li key={pt} className="flex items-center gap-3 text-[14px] text-[#334155] font-medium">
                       <span className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0"
                         style={{ background: accent.light }}>
-                        <FaCircleCheck size={10} style={{ color: accent.primary }}/>
+                        <FaCircleCheck size={10} style={{ color: accent.primary }} />
                       </span>
                       {pt}
                     </li>
@@ -182,7 +182,7 @@ export default function FinanceCategoryPage({ params }: Props) {
                       className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-[2px] transition-colors duration-200"
                       style={{ background: accent.light }}
                     >
-                      <FaCircleCheck size={10} style={{ color: accent.primary }}/>
+                      <FaCircleCheck size={10} style={{ color: accent.primary }} />
                     </span>
                     <span className="text-slate-600 text-[14.5px] leading-relaxed">{feature}</span>
                   </li>
@@ -197,11 +197,11 @@ export default function FinanceCategoryPage({ params }: Props) {
                   className="inline-flex items-center gap-2 px-6 py-[13px] rounded-[11px] text-[15px] font-bold text-white transition-all duration-200 hover:opacity-90 hover:shadow-md"
                   style={{ background: accent.primary }}
                 >
-                  {cat.ctaLabel}
+                  {cat.ctaLabel} <FaArrowRight size={11} />
                 </Link>
                 <Button variant="ghost" size="md" href="/finance">
                   <span className="flex items-center gap-2">
-                    <FaArrowLeft size={11}/> All Finance
+                    <FaArrowLeft size={11} /> All Finance
                   </span>
                 </Button>
               </div>
@@ -212,7 +212,7 @@ export default function FinanceCategoryPage({ params }: Props) {
               className="rounded-[24px] overflow-hidden border border-slate-200/80 bg-slate-50/60 p-[14px]"
               style={{ boxShadow: '0 20px 60px rgba(15,23,42,0.09), 0 4px 16px rgba(15,23,42,0.05)' }}
             >
-              <CategoryIllustration slug={cat.slug} className="w-full"/>
+              <CategoryIllustration slug={cat.slug} className="w-full" />
               <p className="text-center text-[11.5px] text-slate-400 font-medium mt-4 tracking-wide">
                 {cat.title} — Finance Overview
               </p>
@@ -237,7 +237,7 @@ export default function FinanceCategoryPage({ params }: Props) {
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
                     style={{ background: accent.light }}>
-                    <FaArrowRight size={12} style={{ color: accent.primary }}/>
+                    <FaArrowRight size={12} style={{ color: accent.primary }} />
                   </span>
                   <h3 className="font-heading font-bold text-[#0F172A] text-[17px]">
                     {item.label}
@@ -246,10 +246,10 @@ export default function FinanceCategoryPage({ params }: Props) {
                 <p className="text-[#64748B] text-[14px] leading-relaxed mb-5">
                   Expert advisory and implementation support for {item.label.toLowerCase()} — backed by our in-depth knowledge of the Indian financial ecosystem.
                 </p>
-                <Link href="/contact"
+                <Link href={`${params.category}/details`}
                   className="inline-flex items-center gap-1 text-[14px] font-bold hover:underline transition-colors"
                   style={{ color: accent.primary }}>
-                  Learn more <FaArrowRight size={10}/>
+                  Learn more <FaArrowRight size={10} />
                 </Link>
               </div>
             ))}
@@ -279,7 +279,7 @@ export default function FinanceCategoryPage({ params }: Props) {
                     </span>
                     <span className="text-[12px] text-[#94A3B8] mt-1 block">{other.tagline}</span>
                   </div>
-                  <FaChevronRight size={12} className="text-[#CBD5E1] group-hover:text-[#2563EB] transition-colors ml-auto flex-shrink-0"/>
+                  <FaChevronRight size={12} className="text-[#CBD5E1] group-hover:text-[#2563EB] transition-colors ml-auto flex-shrink-0" />
                 </Link>
               );
             })}
