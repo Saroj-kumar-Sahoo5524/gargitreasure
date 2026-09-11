@@ -47,11 +47,11 @@ export default function InvestmentCategoryPage({ params }: Props) {
       >
         {/* Subtle grid overlay */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-          style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '80px 80px' }}/>
+          style={{ backgroundImage: 'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)', backgroundSize: '80px 80px' }} />
 
         {/* Orb */}
         <div className="absolute top-[-100px] right-[-100px] w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{ background: 'radial-gradient(circle,#2563EB18,transparent 70%)' }}/>
+          style={{ background: 'radial-gradient(circle,#2563EB18,transparent 70%)' }} />
 
         <div className="max-w-[1280px] mx-auto px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-10 items-start">
@@ -61,9 +61,9 @@ export default function InvestmentCategoryPage({ params }: Props) {
               {/* Breadcrumb */}
               <nav className="flex items-center gap-2 text-[13px] text-white/50 mb-8">
                 <Link href="/" className="hover:text-white transition-colors">Home</Link>
-                <FaChevronRight size={9}/>
+                <FaChevronRight size={9} />
                 <Link href="/investments" className="hover:text-white transition-colors">Investments</Link>
-                <FaChevronRight size={9}/>
+                <FaChevronRight size={9} />
                 <span className="text-white font-medium">{cat.title}</span>
               </nav>
 
@@ -87,7 +87,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                 {cat.items.map((item) => (
                   <Link key={item.label} href={item.href}
                     className="flex items-center gap-2 bg-white/10 border border-white/20 text-white/85 text-[13.5px] font-semibold px-4 py-[9px] rounded-full hover:bg-white/20 transition-colors duration-200">
-                    <FaArrowRight size={9} className="text-white/60"/>
+                    <FaArrowRight size={9} className="text-white/60" />
                     {item.label}
                   </Link>
                 ))}
@@ -97,7 +97,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
             {/* RIGHT: Advisor card */}
             <div className="bg-white rounded-[20px] overflow-hidden shadow-[0_24px_64px_rgba(0,0,0,.25)] mt-4 lg:mt-8">
               {/* Blue accent strip */}
-              <div className="h-[6px]" style={{ background: 'linear-gradient(90deg,#2563EB,#3B82F6)'}}/>
+              <div className="h-[6px]" style={{ background: 'linear-gradient(90deg,#2563EB,#3B82F6)' }} />
               <div className="p-8">
                 <h3 className="font-heading font-extrabold text-[#0F172A] text-[20px] mb-2">
                   Get Started with {cat.title}
@@ -116,7 +116,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                   ].map((pt) => (
                     <li key={pt} className="flex items-center gap-3 text-[14px] text-[#334155] font-medium">
                       <span className="w-5 h-5 rounded-full bg-[#DBEAFE] flex items-center justify-center flex-shrink-0">
-                        <FaCircleCheck size={10} className="text-[#2563EB]"/>
+                        <FaCircleCheck size={10} className="text-[#2563EB]" />
                       </span>
                       {pt}
                     </li>
@@ -175,7 +175,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                     className="group flex items-start gap-3 px-3 py-2.5 rounded-xl transition-all duration-200 hover:bg-slate-50 border border-transparent hover:border-slate-100 cursor-default"
                   >
                     <span className="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center flex-shrink-0 mt-[2px] group-hover:bg-blue-100 transition-colors duration-200">
-                      <FaCircleCheck size={10} className="text-blue-600"/>
+                      <FaCircleCheck size={10} className="text-blue-600" />
                     </span>
                     <span className="text-slate-600 text-[14.5px] leading-relaxed">{feature}</span>
                   </li>
@@ -190,11 +190,11 @@ export default function InvestmentCategoryPage({ params }: Props) {
                   href={`/investments/${params.category}/details`}
                   id={`explore-${params.category}-details`}
                 >
-                  {cat.ctaLabel}
+                  {cat.ctaLabel} <FaArrowRight size={11} />
                 </Button>
                 <Button variant="ghost" size="md" href="/investments">
                   <span className="flex items-center gap-2">
-                    <FaArrowLeft size={11}/> All Investments
+                    <FaArrowLeft size={11} /> All Investments
                   </span>
                 </Button>
               </div>
@@ -205,7 +205,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
               className="rounded-[24px] overflow-hidden border border-slate-200/80 bg-slate-50/60 p-[14px]"
               style={{ boxShadow: '0 20px 60px rgba(15,23,42,0.09), 0 4px 16px rgba(15,23,42,0.05)' }}
             >
-              <CategoryIllustration slug={cat.slug} className="w-full"/>
+              <CategoryIllustration slug={cat.slug} className="w-full" />
               <p className="text-center text-[11.5px] text-slate-400 font-medium mt-4 tracking-wide">
                 {cat.title} — Investment Overview
               </p>
@@ -230,7 +230,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                 {/* Arrow icon badge */}
                 <div className="flex items-center gap-3 mb-4">
                   <span className="w-8 h-8 rounded-full bg-[#EFF6FF] flex items-center justify-center flex-shrink-0">
-                    <FaArrowRight size={12} className="text-[#2563EB]"/>
+                    <FaArrowRight size={12} className="text-[#2563EB]" />
                   </span>
                   <h3 className="font-heading font-bold text-[#0F172A] text-[17px]">
                     {item.label}
@@ -241,7 +241,7 @@ export default function InvestmentCategoryPage({ params }: Props) {
                 </p>
                 <Link href="/contact"
                   className="inline-flex items-center gap-1 text-[14px] font-bold text-[#2563EB] hover:underline transition-colors">
-                  Learn more <FaArrowRight size={10}/>
+                  Learn more <FaArrowRight size={10} />
                 </Link>
               </div>
             ))}
