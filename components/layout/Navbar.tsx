@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { FaBars } from 'react-icons/fa6';
 import { useScrolled } from '@/hooks/useScrolled';
@@ -10,12 +11,12 @@ import { Button } from '@/components/ui/Button';
 
 /** All nav links shown in the top bar */
 const desktopNavItems = [
-  { label: 'Home',       href: '/' },
+  { label: 'Home', href: '/' },
   { label: 'Investment', href: '/investments' },
-  { label: 'Finance',    href: '/finance' },
-  { label: 'About Us',   href: '/about' },
-  { label: 'Resources',  href: '/resources' },
-  { label: 'Contact',    href: '/contact' },
+  { label: 'Finance', href: '/finance' },
+  { label: 'About Us', href: '/about' },
+  { label: 'Resources', href: '/resources' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const mobileLinks = desktopNavItems;
@@ -59,27 +60,29 @@ export function Navbar() {
     <>
       <header
         id="nav"
-        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] ${
-          scrolled
-            ? 'py-[14px] bg-white/92 backdrop-blur-[14px] backdrop-saturate-[160%] shadow-[0_1px_0_rgba(11,27,52,.06),0_12px_30px_rgba(11,27,52,.07)]'
-            : useWhiteNav
-              ? 'py-[22px] bg-transparent'
-              : 'py-[22px] bg-transparent'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-[350ms] ease-[cubic-bezier(.2,.7,.2,1)] ${scrolled
+          ? 'py-[14px] bg-white/92 backdrop-blur-[14px] backdrop-saturate-[160%] shadow-[0_1px_0_rgba(11,27,52,.06),0_12px_30px_rgba(11,27,52,.07)]'
+          : useWhiteNav
+            ? 'py-[22px] bg-transparent'
+            : 'py-[22px] bg-transparent'
+          }`}
       >
         <div className="max-w-content mx-auto px-8 flex items-center justify-between">
 
           {/* Logo */}
           <Link
             href="/"
-            className={`flex items-center gap-[10px] font-heading font-extrabold text-[19px] no-underline transition-colors duration-[250ms] ${
-              useWhiteNav ? 'text-white' : 'text-ink'
-            }`}
+            className={`flex items-center gap-[10px] font-heading font-extrabold text-[19px] no-underline transition-colors duration-[250ms] ${useWhiteNav ? 'text-white' : 'text-ink'
+              }`}
           >
-            <span className="w-[34px] h-[34px] rounded-[9px] bg-gradient-to-br from-royal to-teal flex items-center justify-center text-white text-[15px] font-extrabold flex-shrink-0">
-              GT
-            </span>
-            Gargi Treasure
+            <Image
+              src="/assets/logo.png"
+              alt="Gargi Treasure Logo"
+              height={70}
+              width={120}
+              className="h-[70px] w-auto object-contain flex-shrink-0"
+              priority
+            />
           </Link>
 
           {/* Desktop nav links */}
@@ -155,9 +158,8 @@ export function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className={`lg:hidden bg-transparent border-none text-[22px] cursor-pointer p-2 transition-colors duration-[250ms] ${
-              useWhiteNav ? 'text-white' : 'text-ink'
-            }`}
+            className={`lg:hidden bg-transparent border-none text-[22px] cursor-pointer p-2 transition-colors duration-[250ms] ${useWhiteNav ? 'text-white' : 'text-ink'
+              }`}
             id="navToggle"
             onClick={open}
             aria-label="Open menu"

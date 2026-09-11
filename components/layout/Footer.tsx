@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaLinkedinIn, FaXTwitter, FaInstagram, FaFacebookF } from 'react-icons/fa6';
 import { footerColumns, socialLinks, legalLinks } from '@/lib/data/footer';
 import type { SocialLink } from '@/types/content';
@@ -33,12 +34,15 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] gap-10 pb-[52px] border-b border-white/10">
           {/* Brand */}
           <div>
-            <span className="flex items-center gap-[10px] font-heading font-extrabold text-[19px] text-white mb-4">
-              <span className="w-[34px] h-[34px] rounded-[9px] bg-gradient-to-br from-royal to-teal flex items-center justify-center text-white text-[15px] font-extrabold flex-shrink-0">
-                GT
-              </span>
-              Gargi Treasure
-            </span>
+            <Link href="/" className="inline-flex mb-4">
+              <Image
+                src="/assets/logo.png"
+                alt="Gargi Treasure"
+                height={60}
+                width={160}
+                className="h-[60px] w-auto object-contain"
+              />
+            </Link>
             <p className="text-[14px] text-white/50 max-w-[280px] mb-5">
               Financial solutions built around your goals — with transparent terms and professional guidance at every step.
             </p>
