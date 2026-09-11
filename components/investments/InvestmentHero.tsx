@@ -3,13 +3,14 @@
  * Dark-gradient hero section for /investments/[category]/details pages.
  * Matches the visual language of the existing [category] page hero.
  */
+import type { ReactNode } from 'react';
 import Link from 'next/link';
 import { FaChevronRight } from 'react-icons/fa6';
 
 interface Props {
   categorySlug: string;
   categoryTitle: string;
-  categoryIcon: string;
+  categoryIcon: ReactNode;
   eyebrow: string;
   headline: string;
   subheadline: string;

@@ -2,7 +2,24 @@
  * Mega-menu data for Investment and Finance nav dropdowns.
  * Each category has a slug (used for routing), a title, sub-items, description,
  * and page content used on the dedicated category pages.
+ *
+ * NOTE: icons are React.ReactNode (react-icons SVG) — NOT emoji strings.
+ * Emoji rendering is unreliable on Linux-based production servers that
+ * lack modern emoji fonts (e.g. Noto Emoji), so we use SVG icons instead.
  */
+import type { ReactNode } from 'react';
+import {
+  FaBolt,
+  FaBuilding,
+  FaChartLine,
+  FaSeedling,
+  FaGem,
+  FaBitcoinSign,
+  FaBuildingColumns,
+  FaShieldHalved,
+  FaFolderOpen,
+  FaPaintbrush,
+} from 'react-icons/fa6';
 
 export interface MegaMenuSubItem {
   label: string;
@@ -12,7 +29,7 @@ export interface MegaMenuSubItem {
 export interface MegaMenuCategory {
   slug: string;
   title: string;
-  icon: string; /** emoji icon for visual identity */
+  icon: ReactNode; /** SVG icon (react-icons) for visual identity */
   tagline: string;
   items: MegaMenuSubItem[];
   /** Used on the dedicated category page */
@@ -38,7 +55,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'energy',
       title: 'Energy',
-      icon: '⚡',
+      icon: <FaBolt />,
       tagline: 'Power the future, profit from it',
       items: [
         { label: 'Petrochemicals', href: '/investments/energy#petrochemicals' },
@@ -57,7 +74,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'real-estate',
       title: 'Real Estate',
-      icon: '🏗️',
+      icon: <FaBuilding />,
       tagline: 'Tangible assets, lasting returns',
       items: [
         { label: 'Land Investment', href: '/investments/real-estate#land' },
@@ -76,7 +93,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'shares-bonds',
       title: 'Shares & Bonds',
-      icon: '📈',
+      icon: <FaChartLine />,
       tagline: 'Market-linked wealth with disciplined strategy',
       items: [
         { label: 'Equity Shares', href: '/investments/shares-bonds#equity' },
@@ -95,7 +112,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'agriculture',
       title: 'Agriculture',
-      icon: '🌾',
+      icon: <FaSeedling />,
       tagline: 'Invest in India\'s food security',
       items: [
         { label: 'Aqua Culture', href: '/investments/agriculture#aqua' },
@@ -116,7 +133,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'bullion-gemstones',
       title: 'Bullion / Gemstones',
-      icon: '💎',
+      icon: <FaGem />,
       tagline: 'Timeless stores of value',
       items: [
         { label: 'Gold', href: '/investments/bullion-gemstones#gold' },
@@ -135,7 +152,7 @@ export const investmentMegaMenu: MegaMenuGroup = {
     {
       slug: 'crypto',
       title: 'Crypto',
-      icon: '🪙',
+      icon: <FaBitcoinSign />,
       tagline: 'Digital assets for the forward-thinking investor',
       items: [
         { label: 'Bitcoin (BTC)', href: '/investments/crypto#btc' },
@@ -164,7 +181,7 @@ export const financeMegaMenu: MegaMenuGroup = {
     {
       slug: 'banking',
       title: 'Banking',
-      icon: '🏦',
+      icon: <FaBuildingColumns />,
       tagline: 'Smart banking for every life stage',
       items: [
         { label: 'Mutual Fund', href: '/finance/banking#mutual-fund' },
@@ -185,7 +202,7 @@ export const financeMegaMenu: MegaMenuGroup = {
     {
       slug: 'insurance',
       title: 'Insurance',
-      icon: '🛡️',
+      icon: <FaShieldHalved />,
       tagline: 'Protection that keeps your wealth intact',
       items: [
         { label: 'Life Insurance', href: '/finance/insurance#life' },
@@ -206,7 +223,7 @@ export const financeMegaMenu: MegaMenuGroup = {
     {
       slug: 'provident-fund',
       title: 'Provident Fund',
-      icon: '📁',
+      icon: <FaFolderOpen />,
       tagline: 'Tax-efficient retirement savings',
       items: [
         { label: 'EPF Advisory', href: '/finance/provident-fund#epf' },
@@ -226,7 +243,7 @@ export const financeMegaMenu: MegaMenuGroup = {
     {
       slug: 'alternate-investment',
       title: 'Alternate Investment',
-      icon: '🖼️',
+      icon: <FaPaintbrush />,
       tagline: 'Unique assets, unique returns',
       items: [
         { label: 'Paintings & Fine Art', href: '/finance/alternate-investment#art' },
