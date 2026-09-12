@@ -46,8 +46,8 @@ const plans = [
 ];
 
 const PHONES = [
-  { label: 'Primary', number: '06744119039' },
-  { label: 'Secondary', number: '7438968674' },
+  { label: 'Landline', number: '06744119039' },
+  { label: 'Mobile', number: '7438968674' },
 ];
 
 /* ── Component ──────────────────────────────────────────────────────────── */
@@ -93,7 +93,7 @@ export function InvestmentPlansCard() {
               style={{ background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.15)', color: 'rgba(255,255,255,0.75)' }}
             >
               <FaChartLine size={10} />
-              Investment With Us
+              Invest With Us
             </div>
 
             <h2
