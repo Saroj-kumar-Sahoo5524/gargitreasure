@@ -31,6 +31,6 @@ export const statsData: StatItem[] = [
     prefix: '',
     suffix: '',
     staticValue: '9 PM - 6 AM ',
-    label: 'Working Hours',
+    label: 'Working Hours | Closed on select holidays',
   },
 ];
