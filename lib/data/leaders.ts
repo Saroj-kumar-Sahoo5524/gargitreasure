@@ -26,7 +26,7 @@ export const leadersData: Leader[] = [
     name: 'Er. Nirmalya Behera',
     title: 'Co-Founder',
     role: 'Executive Leadership & Corporate Governance',
-    bio: 'Er. Nirmalya Behera partners in executive leadership to shape the technical foundation and corporate governance of Gargi Treasure. Her engineering background enables her to drive strategic market expansion, build trusted client relationships, and oversee operational compliance.',
+    bio: 'Er. Nirmalya Behera partners in executive leadership to shape the technical foundation and corporate governance of Gargi Treasure. His engineering background enables him to drive strategic market expansion, build trusted client relationships, and oversee operational compliance.',
     linkedin: null,
     initials: 'NB',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
