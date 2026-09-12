@@ -1,10 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import {
   FaPhone,
   FaChartLine,
-  FaArrowRight,
   FaStar,
   FaRocket,
   FaCrown,

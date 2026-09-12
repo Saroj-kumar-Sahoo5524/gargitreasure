@@ -5,10 +5,12 @@ export const footerColumns: FooterColumn[] = [
     heading: 'Company',
     links: [
       { label: 'About Us', href: '/about' },
+      { label: 'Our Leaders', href: '/our-leaders' },
       { label: 'Careers', href: '#' },
       { label: 'Contact', href: '/contact' },
     ],
   },
+
   {
     heading: 'Financial Solutions',
     links: [

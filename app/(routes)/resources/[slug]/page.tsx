@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import Link from 'next/link';
+
 import { resourcesData } from '@/lib/data/resources';
 import { ResourceDetailClient } from '@/components/sections/ResourceDetailClient';
 

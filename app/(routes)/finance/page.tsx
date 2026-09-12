@@ -18,8 +18,10 @@ const categoryColors: Record<string, { bg: string; color: string }> = {
   'alternate-investment': { bg: '#7C3AED14', color: '#7C3AED' },
 };
 
-/** Loan product cards shown below */
+/** Loan product cards — kept for future use */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const loanProducts = [
+
   {
     icon: '💰',
     color: '#2451D6',

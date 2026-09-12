@@ -3,7 +3,7 @@
  * Bottom CTA band for /investments/[category]/details pages.
  * Matches the style of the existing CTA band on [category]/page.tsx.
  */
-import Link from 'next/link';
+
 import { Button } from '@/components/ui/Button';
 import { FaArrowLeft } from 'react-icons/fa6';
 

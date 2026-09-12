@@ -19,10 +19,10 @@ export type {
 } from './investmentDetails';
 
 import type {
-  InvestmentOpportunity,
   InvestmentSection,
   InvestmentAdvantage,
 } from './investmentDetails';
+
 
 export interface FinanceDetailData {
   /** ALL-CAPS eyebrow label */
