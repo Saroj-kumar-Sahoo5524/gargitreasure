@@ -2,19 +2,19 @@ import type { StatItem } from '@/types/content';
 
 export const statsData: StatItem[] = [
   {
-    count: 10,
+    count: 15,
     prefix: '',
     suffix: '+',
     label: 'Years of Experience',
   },
   {
-    count: 5000,
+    count: 100,
     prefix: '',
     suffix: '+',
     label: 'Customers Served',
   },
   {
-    count: 100,
+    count: 5,
     prefix: '₹',
     suffix: ' Cr+',
     label: 'Financial Solutions Facilitated',
@@ -23,7 +23,14 @@ export const statsData: StatItem[] = [
     count: null,
     prefix: '',
     suffix: '',
-    staticValue: '24/7',
+    staticValue: 'Coming Soon',
     label: 'Digital Access',
+  },
+  {
+    count: null,
+    prefix: '',
+    suffix: '',
+    staticValue: '9 PM - 6 AM ',
+    label: 'Working Hours',
   },
 ];

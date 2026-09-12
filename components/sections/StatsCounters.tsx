@@ -7,7 +7,7 @@ import { useCountUp } from '@/hooks/useCountUp';
 import { StatIcon } from '@/components/graphics/StatIcon';
 
 type StatIconVariant = 'years' | 'customers' | 'solutions' | 'digital';
-const iconVariants: StatIconVariant[] = ['years', 'customers', 'solutions', 'digital'];
+const iconVariants: StatIconVariant[] = ['years', 'customers', 'solutions', 'digital', 'years'];
 
 interface StatCounterProps {
   stat: (typeof statsData)[number];
@@ -51,8 +51,8 @@ function StatCounter({ stat, index, iconVariant }: StatCounterProps) {
       <StatIcon variant={iconVariant} isVisible={isVisible} size={20} />
       <span
         ref={countRef}
-        className="font-heading font-extrabold text-white block mb-[6px] tabular-nums"
-        style={{ fontSize: 'clamp(28px,3vw,38px)' }}
+        className="font-heading font-extrabold text-white block mb-[6px] tabular-nums whitespace-nowrap"
+        style={{ fontSize: stat.count === null ? 'clamp(18px,1.6vw,28px)' : 'clamp(28px,3vw,38px)' }}
       >
         {stat.count === null ? stat.staticValue : displayValue}
       </span>
@@ -68,7 +68,7 @@ export function StatsCounters() {
   return (
     <section className="bg-ink py-[56px]">
       <div className="max-w-content mx-auto px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-5 row-gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
           {statsData.map((stat, i) => (
             <StatCounter
               key={stat.label}

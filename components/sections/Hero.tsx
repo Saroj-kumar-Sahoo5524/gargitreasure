@@ -75,7 +75,7 @@ export function Hero() {
               transition={{ duration: 0.7, ease: 'easeOut' }}
             >
               <span className="w-[8px] h-[8px] rounded-full bg-teal shadow-[0_0_0_4px_rgba(14,124,123,.15)] flex-shrink-0" />
-              Your Financial Journey, Our Commitment
+              Trusted Finance | Lasting Treasure
             </motion.span>
 
             {/* Heading */}
