@@ -1,8 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { FaLinkedinIn } from 'react-icons/fa6';
 import { leadersData, type Leader } from '@/lib/data/leaders';
+
 
 /* ─────────────────────────────────────────
    Individual leader row — alternating layout
@@ -36,20 +38,39 @@ function LeaderRow({ leader, index }: { leader: Leader; index: number }) {
         className="flex-shrink-0 flex flex-col items-center gap-4"
         {...avatarAnim}
       >
-        {/* Circle avatar */}
-        <div
-          className={`relative w-[150px] h-[150px] md:w-[180px] md:h-[180px] rounded-full
-                      bg-gradient-to-br ${leader.gradient}
-                      flex items-center justify-center
-                      shadow-[0_8px_40px_rgba(11,27,52,0.22)]
-                      ring-4 ring-white`}
-        >
-          <span className="font-heading font-extrabold text-white text-[48px] md:text-[56px] select-none">
-            {leader.initials}
-          </span>
-          {/* Gloss */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 to-transparent" />
-        </div>
+        {/* Circle avatar — photo if available, initials fallback */}
+        {leader.photo ? (
+          <div
+            className={`relative w-[150px] h-[150px] md:w-[180px] md:h-[180px] rounded-full
+                        overflow-hidden ring-4 ring-white
+                        shadow-[0_8px_40px_rgba(11,27,52,0.22)]`}
+          >
+            <Image
+              src={leader.photo}
+              alt={`Photo of ${leader.name}`}
+              fill
+              className="object-cover object-top"
+              sizes="180px"
+            />
+            {/* Subtle gradient overlay at bottom for polish */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+          </div>
+        ) : (
+          <div
+            className={`relative w-[150px] h-[150px] md:w-[180px] md:h-[180px] rounded-full
+                        bg-gradient-to-br ${leader.gradient}
+                        flex items-center justify-center
+                        shadow-[0_8px_40px_rgba(11,27,52,0.22)]
+                        ring-4 ring-white`}
+          >
+            <span className="font-heading font-extrabold text-white text-[48px] md:text-[56px] select-none">
+              {leader.initials}
+            </span>
+            {/* Gloss */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/20 to-transparent" />
+          </div>
+        )}
+
 
         {/* Badge */}
         {leader.badge && (

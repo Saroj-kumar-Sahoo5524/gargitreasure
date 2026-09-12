@@ -7,6 +7,7 @@ export interface Leader {
   initials: string;
   gradient: string;
   badge?: string;
+  photo?: string; // path relative to /public
 }
 
 export const leadersData: Leader[] = [
@@ -19,6 +20,7 @@ export const leadersData: Leader[] = [
     initials: 'CB',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
     badge: 'Founder',
+    photo: '/assets/founder&chairman.png',
   },
   {
     name: 'Er. Nirmalya Behera',
@@ -29,6 +31,7 @@ export const leadersData: Leader[] = [
     initials: 'NB',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
     badge: 'Co-Founder',
+    photo: '/assets/co-founder.png',
   },
   {
     name: 'Mr. Charak Ray',
@@ -39,6 +42,7 @@ export const leadersData: Leader[] = [
     initials: 'CR',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
     badge: 'CFO',
+    photo: '/assets/cfo.png',
   },
   {
     name: 'Mr. Asutosh Rout',
@@ -48,6 +52,7 @@ export const leadersData: Leader[] = [
     linkedin: null,
     initials: 'AR',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
+    photo: '/assets/headofoperations.png',
   },
   {
     name: 'Mr. Bikram Aditya Ray',
@@ -57,6 +62,7 @@ export const leadersData: Leader[] = [
     linkedin: 'https://www.linkedin.com/in/bikram-aditya-ray-34019b418/',
     initials: 'BR',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
+    photo: '/assets/cfc.png',
   },
   {
     name: 'Er. Kirtan Chandra Patra',
@@ -66,6 +72,6 @@ export const leadersData: Leader[] = [
     linkedin: null,
     initials: 'KP',
     gradient: 'from-[#2451D6] to-[#1B3DA6]',
+    photo: '/assets/financeconsultant.png',
   },
 ];
-
