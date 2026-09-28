@@ -3,6 +3,7 @@ import { FaArrowRight, FaChevronRight, FaCircleCheck } from 'react-icons/fa6';
 import { investmentMegaMenu } from '@/lib/data/megamenu';
 import { Button } from '@/components/ui/Button';
 import { InvestmentPlansCard } from '@/components/investments/InvestmentPlansCard';
+import { StartApplicationButton } from '@/components/investments/StartApplicationButton';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -55,6 +56,7 @@ export default function InvestmentsPage() {
           <p className="text-white/65 text-[17px] max-w-[560px] leading-relaxed">
             Choose from six curated investment categories — each backed by in-depth research, transparent terms, and dedicated expert advisory.
           </p>
+          <StartApplicationButton />
         </div>
       </section>
 
