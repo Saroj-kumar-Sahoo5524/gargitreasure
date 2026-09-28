@@ -13,12 +13,12 @@ export const metadata: Metadata = {
 
 /** Icon background colour per category */
 const categoryColors: Record<string, { bg: string; color: string }> = {
-  energy:               { bg: '#2451D614', color: '#2451D6' },
-  'real-estate':        { bg: '#0E7C7B14', color: '#0E7C7B' },
-  'shares-bonds':       { bg: '#1B3DA614', color: '#1B3DA6' },
-  agriculture:          { bg: '#15803D14', color: '#15803D' },
-  'bullion-gemstones':  { bg: '#A87C3414', color: '#A87C34' },
-  crypto:               { bg: '#4338CA14', color: '#4338CA' },
+  energy: { bg: '#2451D614', color: '#2451D6' },
+  'real-estate': { bg: '#0E7C7B14', color: '#0E7C7B' },
+  'shares-bonds': { bg: '#1B3DA614', color: '#1B3DA6' },
+  agriculture: { bg: '#15803D14', color: '#15803D' },
+  'bullion-gemstones': { bg: '#A87C3414', color: '#A87C34' },
+  crypto: { bg: '#4338CA14', color: '#4338CA' },
 };
 
 /**
@@ -50,7 +50,7 @@ export default function InvestmentsPage() {
             className="font-heading font-extrabold text-white mb-3"
             style={{ fontSize: 'clamp(30px,4vw,50px)' }}
           >
-            Where would you like to invest?
+            Where you are investing...
           </h1>
           <p className="text-white/65 text-[17px] max-w-[560px] leading-relaxed">
             Choose from six curated investment categories — each backed by in-depth research, transparent terms, and dedicated expert advisory.

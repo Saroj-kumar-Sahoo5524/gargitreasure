@@ -65,7 +65,7 @@ export function MegaMenu({ group, isOpen, onClose }: MegaMenuProps) {
                   </span>
                   <h3 className="font-heading font-extrabold text-[20px] text-[#0B1B34] mt-[2px]">
                     {group.key === 'investment'
-                      ? 'Where would you like to invest?'
+                      ? 'Where you are investing...'
                       : 'What financial solution do you need?'}
                   </h3>
                 </div>
