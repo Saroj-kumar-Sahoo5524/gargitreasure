@@ -1,5 +1,7 @@
 'use client';
 
+import Link from 'next/link';
+
 export function StartApplicationButton() {
   return (
     <div className="mt-8 flex items-center gap-4 flex-wrap">
@@ -13,7 +15,8 @@ export function StartApplicationButton() {
           }}
         />
 
-        <button
+        <Link
+          href="/investments/apply"
           style={{
             position: 'relative',
             display: 'inline-flex',
@@ -21,8 +24,7 @@ export function StartApplicationButton() {
             gap: '10px',
             padding: '14px 28px',
             borderRadius: '14px',
-            border: 'none',
-            cursor: 'pointer',
+            textDecoration: 'none',
             fontWeight: 700,
             fontSize: '15px',
             letterSpacing: '0.3px',
@@ -35,14 +37,14 @@ export function StartApplicationButton() {
             transition: 'transform 0.2s ease, box-shadow 0.2s ease',
           }}
           onMouseEnter={e => {
-            const btn = e.currentTarget;
-            btn.style.transform = 'translateY(-2px) scale(1.03)';
-            btn.style.boxShadow = '0 14px 48px rgba(36,81,214,0.60), 0 4px 12px rgba(0,0,0,0.22)';
+            const el = e.currentTarget;
+            el.style.transform = 'translateY(-2px) scale(1.03)';
+            el.style.boxShadow = '0 14px 48px rgba(36,81,214,0.60), 0 4px 12px rgba(0,0,0,0.22)';
           }}
           onMouseLeave={e => {
-            const btn = e.currentTarget;
-            btn.style.transform = 'translateY(0) scale(1)';
-            btn.style.boxShadow = '0 8px 32px rgba(36,81,214,0.45), 0 2px 8px rgba(0,0,0,0.18)';
+            const el = e.currentTarget;
+            el.style.transform = 'translateY(0) scale(1)';
+            el.style.boxShadow = '0 8px 32px rgba(36,81,214,0.45), 0 2px 8px rgba(0,0,0,0.18)';
           }}
         >
           {/* Shimmer sweep */}
@@ -85,7 +87,7 @@ export function StartApplicationButton() {
               />
             </svg>
           </span>
-        </button>
+        </Link>
       </div>
 
       {/* Trust badge */}
@@ -131,3 +133,4 @@ export function StartApplicationButton() {
     </div>
   );
 }
+
