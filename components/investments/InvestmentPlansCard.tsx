@@ -1,11 +1,17 @@
 'use client';
 
+import { FaChartBar } from 'react-icons/fa';
 import {
   FaPhone,
   FaChartLine,
   FaStar,
   FaRocket,
   FaCrown,
+  FaSeedling,
+  FaChartArea,
+  FaChartDiagram,
+  FaBullseye,
+  FaBuysellads,
 } from 'react-icons/fa6';
 
 /* ── Plan tiles (name + icon only — no pricing/details) ─────────────────── */
@@ -40,6 +46,41 @@ const plans = [
     glow: 'rgba(168,124,52,0.22)',
     bgSoft: 'rgba(168,124,52,0.06)',
     borderHover: '#A87C34',
+  },
+];
+
+/* ── Plan tiles (name + icon only — no pricing/details) ─────────────────── */
+const microPlans = [
+  {
+    id: 'Beginner',
+    icon: FaSeedling,
+    label: 'Beginner Plan',
+    tagline: 'Start your investment journey with confidence',
+    gradient: 'linear-gradient(135deg,#6C3FD4 0%,#4F28A8 100%)',
+    glow: 'rgba(108,63,212,0.24)',
+    bgSoft: 'rgba(108,63,212,0.06)',
+    borderHover: '#6C3FD4',
+  },
+  {
+    id: 'Growth',
+    icon: FaChartBar,
+    label: 'Growth Plan',
+    tagline: 'Build your portfolio gradually and steadily',
+    gradient: 'linear-gradient(135deg,#059669 0%,#037A55 100%)',
+    glow: 'rgba(5,150,105,0.24)',
+    bgSoft: 'rgba(5,150,105,0.06)',
+    borderHover: '#059669',
+    badge: 'Popular',
+  },
+  {
+    id: 'Smart Investor Plan',
+    icon: FaBullseye,
+    label: 'Smart Investor Plan',
+    tagline: 'Take the next step toward wealth creation',
+    gradient: 'linear-gradient(135deg,#D97706 0%,#B45309 100%)',
+    glow: 'rgba(217,119,6,0.24)',
+    bgSoft: 'rgba(217,119,6,0.06)',
+    borderHover: '#D97706',
   },
 ];
 
@@ -118,6 +159,75 @@ export function InvestmentPlansCard() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
               {plans.map((plan) => {
+                const Icon = plan.icon;
+                return (
+                  <div
+                    key={plan.id}
+                    className="relative flex flex-col items-center text-center rounded-[20px] px-6 py-8 transition-all duration-300 group cursor-default"
+                    style={{
+                      background: plan.bgSoft,
+                      border: `1.5px solid ${plan.borderHover}20`,
+                    }}
+                    onMouseEnter={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.border = `1.5px solid ${plan.borderHover}55`;
+                      el.style.boxShadow = `0 12px 36px ${plan.glow}`;
+                      el.style.transform = 'translateY(-4px)';
+                    }}
+                    onMouseLeave={e => {
+                      const el = e.currentTarget as HTMLDivElement;
+                      el.style.border = `1.5px solid ${plan.borderHover}20`;
+                      el.style.boxShadow = 'none';
+                      el.style.transform = 'translateY(0)';
+                    }}
+                  >
+                    {/* Popular badge */}
+                    {plan.badge && (
+                      <span
+                        className="absolute top-[-12px] left-1/2 -translate-x-1/2 px-3 py-[4px] rounded-full text-[10px] font-bold tracking-widest uppercase text-white"
+                        style={{ background: plan.gradient, boxShadow: `0 4px 14px ${plan.glow}` }}
+                      >
+                        {plan.badge}
+                      </span>
+                    )}
+
+                    {/* Icon */}
+                    <div
+                      className="w-[60px] h-[60px] rounded-[18px] flex items-center justify-center mb-4"
+                      style={{ background: plan.gradient, boxShadow: `0 8px 24px ${plan.glow}` }}
+                    >
+                      <Icon size={26} color="#fff" />
+                    </div>
+
+                    {/* Name */}
+                    <p className="font-heading font-extrabold text-[#0B1B34] text-[17px] leading-tight mb-1">
+                      {plan.label}
+                    </p>
+
+                    {/* Tagline */}
+                    <p className="text-[13px] text-[#5A6478] leading-snug">
+                      {plan.tagline}
+                    </p>
+
+                    {/* Bottom accent line */}
+                    <div
+                      className="mt-5 h-[3px] w-[40px] rounded-full"
+                      style={{ background: plan.gradient }}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          {/* ── Micro Investment Plan ── */}
+
+          <div className="px-8 sm:px-14 py-10 border-b border-[#E3E7EF]">
+            <p className="text-center text-[12px] font-semibold uppercase tracking-widest text-[#8791A3] mb-7">
+              Micro Investment Plans
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+              {microPlans.map((plan) => {
                 const Icon = plan.icon;
                 return (
                   <div
