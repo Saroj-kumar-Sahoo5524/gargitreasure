@@ -8,10 +8,7 @@ import {
   FaRocket,
   FaCrown,
   FaSeedling,
-  FaChartArea,
-  FaChartDiagram,
   FaBullseye,
-  FaBuysellads,
 } from 'react-icons/fa6';
 
 /* ── Plan tiles (name + icon only — no pricing/details) ─────────────────── */
